@@ -19,8 +19,8 @@ MonoBehaviour:
   gunRange: 40
   gunDamage: 4
   gunMagazineCapacity: 45
-  gunReloadingTime: 3
+  gunReloadingTime: 1.5
   gunDelay: 0.1
   allBullets: 637
-  bulletSpeed: 200
+  bulletSpeed: 600
   bulletLife: 1

@@ -36,4 +36,9 @@ public class PauseControl : MonoBehaviour
         hasEnded= true;
         Time.timeScale = 0;
     }
+
+    public void YES()
+    {
+        Debug.Log("DA");
+    }
 }

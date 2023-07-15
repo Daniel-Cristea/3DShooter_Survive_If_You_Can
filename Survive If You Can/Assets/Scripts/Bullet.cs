@@ -15,10 +15,10 @@ public class Bullet : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         
-        if(collision.gameObject.layer == 6)
+      /*  if(collision.gameObject.layer == 6)
         {
             collision.gameObject.GetComponent<TargetEnemy>().TakeDamage(playerInfo.gunDamage);
-        }
+        } */
 
         Destroy(gameObject);
     }

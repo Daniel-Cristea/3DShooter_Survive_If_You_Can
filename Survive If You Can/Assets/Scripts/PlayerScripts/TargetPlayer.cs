@@ -9,6 +9,7 @@ public class TargetPlayer : MonoBehaviour
     [SerializeField] private PauseControl pauseControl;
     private float health;
     private float maxHealth;
+    public static bool playerDied = false;
 
     
 
@@ -47,7 +48,8 @@ public class TargetPlayer : MonoBehaviour
 
     private void Die()
     {
-        pauseControl.playerDied();
+        playerDied = true;
+       // pauseControl.playerDied();
     }
 
     private void InitializeVariables()

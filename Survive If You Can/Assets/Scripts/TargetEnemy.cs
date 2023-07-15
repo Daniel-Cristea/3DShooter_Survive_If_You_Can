@@ -26,14 +26,14 @@ public class TargetEnemy : MonoBehaviour
 
     public void TakeDamage(float damage)
     {
+        
         health -= damage;
-        //Debug.Log("Health: " + health);
         if (health <= 0)
         {
             Die();
         }
         healthBar.setHealth(health);
-        //healthBar.setHealth(health);
+
     }
 
     private void Die()
