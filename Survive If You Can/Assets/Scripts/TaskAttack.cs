@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using BehaviorTree;
+using UnityEngine.AI;
 
 public class TaskAttack : Node
 {
@@ -9,12 +10,16 @@ public class TaskAttack : Node
     private Transform transform;
     private GameObject weapon;
     private EnemyTYPE enemyType;
+    private NavMeshAgent agent;
+    private EnemyInfo enemyInfo;
 
-    public TaskAttack(Transform transform, GameObject weapon, EnemyTYPE enemyTYPE) 
+    public TaskAttack(Transform transform, GameObject weapon, EnemyTYPE enemyTYPE, NavMeshAgent agent, EnemyInfo enemyInfo) 
     {
         this.transform = transform;
         this.weapon = weapon;
         this.enemyType = enemyTYPE;
+        this.agent = agent;
+        this.enemyInfo = enemyInfo;
     }
 
     public override NodeState Evaluate()
@@ -46,7 +51,8 @@ public class TaskAttack : Node
 
     private void ThrowBomb()
     {
-        
+        agent.speed = enemyInfo.chasingSpeed_Melee/2;
+       // transform.gameObject.GetComponent<Bomb>().Explode(); ERROR HERE 
     }
 
 

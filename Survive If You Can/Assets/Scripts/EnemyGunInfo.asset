@@ -14,7 +14,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gunDamage: 1
   gunRange: 20
+  agentStoppingDistance_Ranged: 6.7
+  agentStoppingDistance_Melee: 2
   allBullets: 1000
   gunMagazineCapacity: 15
-  gunReloadingTime: 2
+  gunReloadingTime: 1.5
   gunDelay: 0.5
+  colleagues:
+    serializedVersion: 2
+    m_Bits: 0
+  obstruction:
+    serializedVersion: 2
+    m_Bits: 0
+  bombRange: 3

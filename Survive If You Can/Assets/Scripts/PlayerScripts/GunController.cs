@@ -63,8 +63,8 @@ public class GunController : MonoBehaviour
 
     private void Shoot()
     {
-        //var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-       // bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * playerInfo.bulletSpeed;
+        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * playerInfo.bulletSpeed;
 
         RaycastHit hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))

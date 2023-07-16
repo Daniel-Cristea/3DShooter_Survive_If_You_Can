@@ -151,8 +151,10 @@ GameObject:
   - component: {fileID: 7424344942981874451}
   - component: {fileID: 1734773420305495185}
   - component: {fileID: 3366973594856013913}
+  - component: {fileID: 6697821413076247171}
   - component: {fileID: 8332113672837100040}
   - component: {fileID: 7503343057949274243}
+  - component: {fileID: 362122733029998545}
   m_Layer: 6
   m_Name: Enemy
   m_TagString: Enemy
@@ -174,6 +176,7 @@ Transform:
   m_Children:
   - {fileID: 8262871701965755479}
   - {fileID: 7438285738961507617}
+  - {fileID: 861966114741473541}
   m_Father: {fileID: 2448918539891653502}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -268,8 +271,26 @@ MonoBehaviour:
   - {fileID: 3459530368249677423}
   - {fileID: 385832053111170909}
   enemyInfo: {fileID: 11400000, guid: 878f0ea1769656b4abfb33c412cd34fb, type: 2}
+  enemyGunInfo: {fileID: 11400000, guid: 58f99956e2c4f394e91940be11c0f08d, type: 2}
   weapon: {fileID: 4319564114777329720}
-  enemyTYPE: 0
+  enemyType: 0
+  agent: {fileID: 362122733029998545}
+--- !u!114 &6697821413076247171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173118322816328643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e25eaf10734a6d3428248c65c8860b84, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agent: {fileID: 362122733029998545}
+  enemyInfo: {fileID: 11400000, guid: 878f0ea1769656b4abfb33c412cd34fb, type: 2}
+  enemyGunInfo: {fileID: 11400000, guid: 58f99956e2c4f394e91940be11c0f08d, type: 2}
+  adaptiveBehavior: {fileID: 3366973594856013913}
 --- !u!114 &8332113672837100040
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -310,8 +331,30 @@ Rigidbody:
   m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 90
+  m_Constraints: 122
   m_CollisionDetection: 0
+--- !u!195 &362122733029998545
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2173118322816328643}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5000001
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &2766081564553303582
 GameObject:
   m_ObjectHideFlags: 0
@@ -513,8 +556,52 @@ Transform:
   - {fileID: 8635047916530964027}
   - {fileID: 3064280631077124287}
   m_Father: {fileID: 0}
-  m_RootOrder: 0
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &4928069861095262552
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 861966114741473541}
+  - component: {fileID: 3007835793018050641}
+  m_Layer: 6
+  m_Name: Bomb
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &861966114741473541
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928069861095262552}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8635047916530964027}
+  m_RootOrder: -1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3007835793018050641
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4928069861095262552}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7f3d7021cfac5f428955c4b439133f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6188863667813896704
 GameObject:
   m_ObjectHideFlags: 0

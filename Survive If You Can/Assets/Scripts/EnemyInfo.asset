@@ -13,10 +13,13 @@ MonoBehaviour:
   m_Name: EnemyInfo
   m_EditorClassIdentifier: 
   patrolSpeed: 6
+  chasingSpeed_Ranged: 4
+  chasingSpeed_Melee: 6
   patrolWaitingTime: 0.6
   fovRange: 30
+  viewAngle: 140
   player:
     serializedVersion: 2
     m_Bits: 8
-  maxHealth: 260
+  maxHealth: 50
   killingBonusPoints: 25

@@ -36,7 +36,7 @@ public class EnemyGun : MonoBehaviour
         if ((allBullets > 0) && (Time.time - LastFired > gunDelay) && canShoot)
         {
             LastFired = Time.time;
-            Shoot(); Debug.Log("YES");
+            Shoot(); //Debug.Log("YES");
         }
     }
 

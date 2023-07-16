@@ -29,9 +29,13 @@ public class CheckEnemyInAttackRange : Node
             return state;
         }
 
+        Transform target = (Transform)t;
+        Vector3 directionToTarget = (target.position - transform.position).normalized;
+        float distanceToTarget = Vector3.Distance(transform.position, target.position);
+
         if (enemyType == EnemyTYPE.Ranged)
         {
-            if(CheckShootingRange(t) == true) 
+            if(CheckShootingRange(directionToTarget, distanceToTarget) == true) 
             {
                 state = NodeState.SUCCESS;
                 return state; 
@@ -39,7 +43,11 @@ public class CheckEnemyInAttackRange : Node
         }
         else if (enemyType == EnemyTYPE.Melee)
         {
-         //   CheckExplosionRange();
+            if(CheckExplosionRange(distanceToTarget) == true)
+            {
+                state = NodeState.SUCCESS;
+                return state;
+            }
         }
 
         state = NodeState.FAILURE;
@@ -48,19 +56,15 @@ public class CheckEnemyInAttackRange : Node
     }
 
 
-    private bool CheckShootingRange(object t)
+    private bool CheckShootingRange(Vector3 directionToTarget, float distanceToTarget)
     {
-        Transform target = (Transform)t;
-        Vector3 directionToTarget = (target.position - transform.position).normalized;
-        float distanceToTarget = Vector3.Distance(transform.position, target.position);
-
+      
         //Check if the target is in the gun range
         if( enemyGunInfo.gunRange >= distanceToTarget)
         {
             //Check if other colleages or walls are between it and the player
             if((!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, enemyGunInfo.obstruction)) && (!Physics.Raycast(transform.position, directionToTarget, distanceToTarget, enemyGunInfo.colleagues)))
             {
-                //state = NodeState.SUCCESS;
                 return true;
             }
         }
@@ -69,8 +73,12 @@ public class CheckEnemyInAttackRange : Node
 
     }
 
-    private bool CheckExplosionRange()
+    private bool CheckExplosionRange(float distanceToTarget)
     {
+        if(enemyGunInfo.bombRange >= distanceToTarget)
+        {
+            return true;
+        }
         return false;
     }
 
