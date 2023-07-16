@@ -52,6 +52,7 @@ public class TaskAttack : Node
     private void ThrowBomb()
     {
         agent.speed = enemyInfo.chasingSpeed_Melee/2;
+        weapon.GetComponent<Bomb>().DetonateBomb();
        // transform.gameObject.GetComponent<Bomb>().Explode(); ERROR HERE 
     }
 

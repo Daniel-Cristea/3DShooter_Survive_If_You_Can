@@ -13,8 +13,11 @@ public class EnemyGunInfo : ScriptableObject
     public int gunMagazineCapacity = 15;
     public float gunReloadingTime = 2.0f;
     public float gunDelay = 0.5f;
+    public LayerMask player;
     public LayerMask colleagues;
     public LayerMask obstruction;
     public float bombRange = 3.0f;
+    public float bombCountdownSeconds = 2.5f;
+    public float bombDamage = 5.0f;
 
 }

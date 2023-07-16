@@ -15,15 +15,20 @@ MonoBehaviour:
   gunDamage: 1
   gunRange: 20
   agentStoppingDistance_Ranged: 6.7
-  agentStoppingDistance_Melee: 2
+  agentStoppingDistance_Melee: 1
   allBullets: 1000
   gunMagazineCapacity: 15
   gunReloadingTime: 1.5
   gunDelay: 0.5
+  player:
+    serializedVersion: 2
+    m_Bits: 8
   colleagues:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 64
   obstruction:
     serializedVersion: 2
     m_Bits: 0
   bombRange: 3
+  bombCountdownSeconds: 1.5
+  bombDamage: 5

@@ -387,6 +387,7 @@
 "Assets/Scripts/TaskAttack.cs"
 "Assets/Scripts/TaskGoToTarget.cs"
 "Assets/Scripts/TaskPatrol.cs"
+"Assets/SpawnManager.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark01_UGUI.cs"
 "Assets/TextMesh Pro/Examples & Extras/Scripts/Benchmark02.cs"

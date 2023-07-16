@@ -37,7 +37,7 @@ public class TaskPatrol : Node
         else
         {
             Transform waypoint = waypoints[currentWaypointIndex];
-            if( Vector3.Distance(transform.position, waypoint.position) <= 0.01f)
+            if( Vector3.Distance(transform.position, waypoint.position) <= 0.1f)
             {
                 transform.position= waypoint.position;
                 waiting = true;
@@ -52,7 +52,8 @@ public class TaskPatrol : Node
                     agent.isStopped = false;
                     agent.SetDestination(waypoint.position);
                 }
-                else { 
+                else {
+                   
                 transform.position = Vector3.MoveTowards(transform.position, waypoint.position, enemyInfo.patrolSpeed * Time.deltaTime);
                 transform.LookAt(waypoint.position);
                 }

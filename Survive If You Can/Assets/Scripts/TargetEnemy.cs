@@ -7,6 +7,8 @@ public class TargetEnemy : MonoBehaviour
     [SerializeField] private EnemyInfo enemyInfo;
     [SerializeField] private HealthBar healthBar;
     [SerializeField] private float health;
+    [SerializeField] private SpawnManager spawnManager;
+    [SerializeField] private AdaptiveBehavior adaptiveBehavior;
     private float maxHealth;
     private GameObject Player;
     private int bonusPoints;
@@ -39,11 +41,15 @@ public class TargetEnemy : MonoBehaviour
     private void Die()
     {
         Player.GetComponent<ScoreCalculator>().enemyKilled(bonusPoints);
-        Destroy(gameObject);
+
+        spawnManager.SpawnEnemy(adaptiveBehavior.getEnemyType());
+
+        Destroy(transform.parent.gameObject);
     }
 
     private void InitializeVariables()
     {
+        spawnManager = FindObjectOfType<SpawnManager>();
         health = enemyInfo.maxHealth;
         maxHealth = enemyInfo.maxHealth;
         Player = GameObject.FindGameObjectWithTag("Player");

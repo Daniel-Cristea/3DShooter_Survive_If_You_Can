@@ -29,10 +29,6 @@ public class TargetPlayer : MonoBehaviour
             Time.timeScale = 1;
         }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            TakeDamage(5);
-        }
     }
 
     public void TakeDamage(float damage)
@@ -49,7 +45,7 @@ public class TargetPlayer : MonoBehaviour
     private void Die()
     {
         playerDied = true;
-       // pauseControl.playerDied();
+
     }
 
     private void InitializeVariables()
