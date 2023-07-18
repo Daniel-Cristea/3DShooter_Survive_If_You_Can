@@ -13,7 +13,6 @@ public class PlayerMovement : MonoBehaviour
     private bool canRotateCamera = false;
 
 
-    
     void Start()
     {
         LockCursor();
@@ -22,7 +21,6 @@ public class PlayerMovement : MonoBehaviour
     }
 
 
-    
     void Update()
     {
         ApplyMovement();

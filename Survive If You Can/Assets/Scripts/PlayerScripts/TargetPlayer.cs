@@ -6,9 +6,7 @@ public class TargetPlayer : MonoBehaviour
 {
     [SerializeField] private PlayerInfo playerInfo;
     [SerializeField] public HealthBar healthBar;
-    [SerializeField] private PauseControl pauseControl;
     private float health;
-    private float maxHealth;
     public static bool playerDied = false;
 
     
@@ -18,17 +16,12 @@ public class TargetPlayer : MonoBehaviour
     {
         InitializeVariables();
         SetLifeCanvas();
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            Time.timeScale = 1;
-        }
-
+        
     }
 
     public void TakeDamage(float damage)
@@ -51,7 +44,6 @@ public class TargetPlayer : MonoBehaviour
     private void InitializeVariables()
     {
         health = playerInfo.maxHealth;
-        maxHealth= playerInfo.maxHealth;
     }
 
     private void SetLifeCanvas()

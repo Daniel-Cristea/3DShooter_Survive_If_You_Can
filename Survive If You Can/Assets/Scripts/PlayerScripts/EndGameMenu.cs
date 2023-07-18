@@ -24,7 +24,6 @@ public class EndGameMenu : MonoBehaviour
         Time.timeScale = 1.0f;
         // AudioListener.pause = false;
         EndGameMenuUI.SetActive(false);
-        Debug.Log("OK");
         SceneManager.LoadScene("Main_Scene");
     }
 
