@@ -25,7 +25,7 @@ public class TaskGoToTarget : Node
     public override NodeState Evaluate()
     {
         Transform targetTransform = (Transform)GetData("target");
-
+        
         Vector3 directionToTarget = (targetTransform.position - transform.position).normalized;
         float distanceToTarget = Vector3.Distance(transform.position, targetTransform.position);
 
@@ -36,7 +36,6 @@ public class TaskGoToTarget : Node
         }
         agent.isStopped = false;
         agent.SetDestination(targetTransform.position);
-
         state = NodeState.SUCCESS;
         return state;
     }

@@ -35,9 +35,10 @@ public class TaskPatrol : Node
         else
         {
             Transform waypoint = waypoints[currentWaypointIndex];
-            if( Vector3.Distance(transform.position, waypoint.position) <= 0.1f)
+            Vector3 nextPos = new Vector3(waypoint.position.x, transform.position.y, waypoint.position.z);
+            if( Vector3.Distance(transform.position, nextPos) <= 0.1f)
             {
-                transform.position= waypoint.position;
+                transform.position= nextPos;
                 waiting = true;
                 waitingCounter= 0f;
 
@@ -46,14 +47,14 @@ public class TaskPatrol : Node
             else
             {
                 // If the enemy got to far away from the waypoints in the process of chasing the player, it will use navmash to get back to the patrol site
-                if(Vector3.Distance(transform.position, waypoint.position) > 10.0f) {
+                if(Vector3.Distance(transform.position, nextPos) > 10.0f) {
                     agent.isStopped = false;
-                    agent.SetDestination(waypoint.position);
+                    agent.SetDestination(nextPos);
                 }
                 else {
                    
-                transform.position = Vector3.MoveTowards(transform.position, waypoint.position, enemyInfo.patrolSpeed * Time.deltaTime);
-                transform.LookAt(waypoint.position);
+                transform.position = Vector3.MoveTowards(transform.position, nextPos, enemyInfo.patrolSpeed * Time.deltaTime);
+                transform.LookAt(nextPos);
                 }
             }
         }
