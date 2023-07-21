@@ -41,7 +41,9 @@ public class Bomb : MonoBehaviour
         effectCube.SetActive(true);
         yield return new WaitForSeconds(bombCountdownSeconds / 3.0f);
         DamagePlayer();
-        spawnManager.SpawnEnemy(EnemyTYPE.Melee);
+        int currentRoomNumber = getRoomNumber();
+
+        spawnManager.SpawnRequest(EnemyTYPE.Melee, currentRoomNumber);
         Destroy(transform.parent.parent.gameObject);
     }
 
@@ -52,5 +54,11 @@ public class Bomb : MonoBehaviour
         {
             colliders[0].transform.gameObject.GetComponent<TargetPlayer>().TakeDamage(bombDamage);
         }
+    }
+
+    private int getRoomNumber()
+    {
+        string roomName = transform.parent.parent.parent.parent.name;
+        return ((int)(roomName[roomName.Length - 1]) - 48);
     }
 }

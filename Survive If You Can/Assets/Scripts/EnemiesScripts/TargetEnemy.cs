@@ -42,9 +42,17 @@ public class TargetEnemy : MonoBehaviour
     {
         Player.GetComponent<ScoreCalculator>().enemyKilled(bonusPoints);
 
-        spawnManager.SpawnEnemy(adaptiveBehavior.getEnemyType());
+        int currentRoomNumber = getRoomNumber();
+        
+        spawnManager.SpawnRequest(adaptiveBehavior.getEnemyType(), currentRoomNumber);
 
         Destroy(transform.parent.gameObject);
+    }
+
+    private int getRoomNumber()
+    {
+        string roomName = transform.parent.parent.parent.name;
+        return ((int)(roomName[roomName.Length - 1]) - 48);
     }
 
     private void InitializeVariables()
