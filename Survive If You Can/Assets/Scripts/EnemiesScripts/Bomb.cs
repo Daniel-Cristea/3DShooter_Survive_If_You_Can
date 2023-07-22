@@ -8,6 +8,7 @@ public class Bomb : MonoBehaviour
     [SerializeField] private EnemyGunInfo enemyGunInfo;
     [SerializeField] private GameObject effectCube;
     [SerializeField] private SpawnManager spawnManager;
+    [SerializeField] private AudioClip explosionSound;
 
     private float bombRange;
     private float bombCountdownSeconds;
@@ -40,6 +41,8 @@ public class Bomb : MonoBehaviour
         yield return new WaitForSeconds(bombCountdownSeconds / 3.0f);
         effectCube.SetActive(true);
         yield return new WaitForSeconds(bombCountdownSeconds / 3.0f);
+        
+        AudioSource.PlayClipAtPoint(explosionSound, transform.position);
         DamagePlayer();
         int currentRoomNumber = getRoomNumber();
 

@@ -23,6 +23,6 @@ MonoBehaviour:
   gunMagazineCapacity: 45
   gunReloadingTime: 1.5
   gunDelay: 0.1
-  allBullets: 1037
+  allBullets: 1137
   bulletSpeed: 600
   bulletLife: 1

@@ -2,18 +2,28 @@ ScriptsOnlyBuild:
   usedScripts:
     Assembly-CSharp.dll:
     - AdaptiveBehavior
+    - AgentConfiguration
+    - Bomb
     - Bullet
     - EndGameMenu
+    - EnemyGun
+    - EnemyGunInfo
     - EnemyInfo
+    - GunController
     - HealthBar
-    - PauseControl
+    - PauseMenu
     - PlayerCamera
-    - PlayerGun
     - PlayerInfo
     - PlayerMovement
     - ScoreCalculator
+    - SpawnManager
     - TargetEnemy
     - TargetPlayer
+    Unity.AI.Navigation.Editor.dll:
+    - Unity.AI.Navigation.Editor.NavMeshAssetManager
+    - Unity.AI.Navigation.Editor.NavigationWindow
+    Unity.AI.Navigation.dll:
+    - Unity.AI.Navigation.NavMeshSurface
     Unity.Rider.Editor.dll:
     - Packages.Rider.Editor.UnitTesting.CallbackData
     Unity.TextMeshPro:
@@ -24,9 +34,6 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
-    - TMPro.TMP_Settings
-    - TMPro.TMP_SpriteAsset
-    - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -79,10 +86,19 @@ ScriptsOnlyBuild:
   methodsToPreserve:
   - assembly: Assembly-CSharp
     fullTypeName: EndGameMenu
+    methodName: RestartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: EndGameMenu
     methodName: QuitGame
   - assembly: Assembly-CSharp
     fullTypeName: EndGameMenu
     methodName: RestartGame
+  - assembly: Assembly-CSharp
+    fullTypeName: PauseMenu
+    methodName: ResumeGame
+  - assembly: Assembly-CSharp
+    fullTypeName: EndGameMenu
+    methodName: QuitGame
   sceneClasses:
     Assets/Scenes/Main_Scene.unity:
     - Class: 1
@@ -109,7 +125,13 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 64
       Script: {instanceID: 0}
+    - Class: 65
+      Script: {instanceID: 0}
     - Class: 81
+      Script: {instanceID: 0}
+    - Class: 82
+      Script: {instanceID: 0}
+    - Class: 83
       Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
@@ -122,57 +144,69 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 1652}
     - Class: 114
-      Script: {instanceID: 1858}
+      Script: {instanceID: 1710}
     - Class: 114
-      Script: {instanceID: 2268}
+      Script: {instanceID: 1860}
     - Class: 114
-      Script: {instanceID: 2702}
+      Script: {instanceID: 1862}
     - Class: 114
-      Script: {instanceID: 2908}
+      Script: {instanceID: 2270}
     - Class: 114
-      Script: {instanceID: 3206}
+      Script: {instanceID: 2706}
     - Class: 114
-      Script: {instanceID: 3564}
+      Script: {instanceID: 2912}
     - Class: 114
-      Script: {instanceID: 3590}
+      Script: {instanceID: 3210}
     - Class: 114
-      Script: {instanceID: 3624}
+      Script: {instanceID: 3568}
     - Class: 114
-      Script: {instanceID: 3650}
+      Script: {instanceID: 3626}
     - Class: 114
-      Script: {instanceID: 4138}
+      Script: {instanceID: 3652}
     - Class: 114
-      Script: {instanceID: 4248}
+      Script: {instanceID: 4140}
     - Class: 114
-      Script: {instanceID: 4504}
+      Script: {instanceID: 4250}
     - Class: 114
-      Script: {instanceID: 4530}
+      Script: {instanceID: 4506}
     - Class: 114
-      Script: {instanceID: 5164}
+      Script: {instanceID: 5166}
     - Class: 114
-      Script: {instanceID: 5226}
+      Script: {instanceID: 5228}
     - Class: 114
-      Script: {instanceID: 5240}
+      Script: {instanceID: 5242}
     - Class: 114
-      Script: {instanceID: 5498}
+      Script: {instanceID: 5270}
     - Class: 114
-      Script: {instanceID: 5518}
+      Script: {instanceID: 5432}
     - Class: 114
-      Script: {instanceID: 5900}
+      Script: {instanceID: 5502}
     - Class: 114
-      Script: {instanceID: 5984}
+      Script: {instanceID: 5522}
     - Class: 114
-      Script: {instanceID: 6304}
+      Script: {instanceID: 5666}
     - Class: 114
-      Script: {instanceID: 6340}
+      Script: {instanceID: 5906}
     - Class: 114
-      Script: {instanceID: 6426}
+      Script: {instanceID: 5990}
     - Class: 114
-      Script: {instanceID: 6602}
+      Script: {instanceID: 6102}
     - Class: 114
-      Script: {instanceID: 6660}
+      Script: {instanceID: 6312}
     - Class: 114
-      Script: {instanceID: 34770}
+      Script: {instanceID: 6348}
+    - Class: 114
+      Script: {instanceID: 6434}
+    - Class: 114
+      Script: {instanceID: 6610}
+    - Class: 114
+      Script: {instanceID: 6668}
+    - Class: 114
+      Script: {instanceID: 6686}
+    - Class: 114
+      Script: {instanceID: 7398}
+    - Class: 114
+      Script: {instanceID: 8080}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -183,7 +217,15 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 157
       Script: {instanceID: 0}
+    - Class: 195
+      Script: {instanceID: 0}
     - Class: 196
+      Script: {instanceID: 0}
+    - Class: 198
+      Script: {instanceID: 0}
+    - Class: 199
+      Script: {instanceID: 0}
+    - Class: 208
       Script: {instanceID: 0}
     - Class: 213
       Script: {instanceID: 0}
@@ -192,6 +234,8 @@ ScriptsOnlyBuild:
     - Class: 223
       Script: {instanceID: 0}
     - Class: 224
+      Script: {instanceID: 0}
+    - Class: 238
       Script: {instanceID: 0}
   scriptHashData:
   - hash:
@@ -218,6 +262,12 @@ ScriptsOnlyBuild:
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
     className: Image
+  - hash:
+      serializedVersion: 2
+      Hash: 551d5076d3a6ac00955bf0e68d1b9b72
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Bomb
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -256,6 +306,12 @@ ScriptsOnlyBuild:
     className: SkewTextExample
   - hash:
       serializedVersion: 2
+      Hash: ee399199be678d5d54c02c0623362827
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: EndGameMenu
+  - hash:
+      serializedVersion: 2
       Hash: ea1569413d805748b7cef2dcb4622c85
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -278,12 +334,6 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
     className: SimpleScript
-  - hash:
-      serializedVersion: 2
-      Hash: b2a99d38a6810f44acd162f4f2efc0a0
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: EnemyHealthBar
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -550,16 +600,10 @@ ScriptsOnlyBuild:
     className: BaseInput
   - hash:
       serializedVersion: 2
-      Hash: 53b1e9fe98f3ddb4f3dfdc416c08559f
+      Hash: 8ed60ea6a23f88a289992c2baa5473cf
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TargetEnemy
-  - hash:
-      serializedVersion: 2
-      Hash: 751e5bae2a317288c2ab58d66687092b
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PauseControl
   - hash:
       serializedVersion: 2
       Hash: 995ded12fd23487c35be69ad8c37f000
@@ -574,7 +618,7 @@ ScriptsOnlyBuild:
     className: UnityOnControllerColliderHitMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 243a08b1b36c20c78f48ea47fb7f5925
+      Hash: a87f35eac3aab967106cba448282069b
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: AdaptiveBehavior
@@ -754,12 +798,6 @@ ScriptsOnlyBuild:
     className: TMPro_InstructionOverlay
   - hash:
       serializedVersion: 2
-      Hash: 267cd39248196a9a725d5f78f1e4bc13
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: PlayerGun
-  - hash:
-      serializedVersion: 2
       Hash: f6bf0fc71f5b6dfe19329b1c4df9fee0
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
@@ -934,7 +972,7 @@ ScriptsOnlyBuild:
     className: WarpTextExample
   - hash:
       serializedVersion: 2
-      Hash: d69fbf47c73f3a9aadd60d8376e6a929
+      Hash: c4229587a8743870a898b5b4ad54d2e1
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: TargetPlayer
@@ -956,6 +994,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.AI.Navigation
     namespaceName: Unity.AI.Navigation
     className: NavMeshModifierVolume
+  - hash:
+      serializedVersion: 2
+      Hash: 887b7f63787d519c07bbaea21e3f8aca
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: EnemyGun
   - hash:
       serializedVersion: 2
       Hash: 2c11e3687875dd78c091544cf3bccfa3
@@ -1012,6 +1056,12 @@ ScriptsOnlyBuild:
     className: Text
   - hash:
       serializedVersion: 2
+      Hash: 3e4870d21e488d5b13cee86ac834a525
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: PauseMenu
+  - hash:
+      serializedVersion: 2
       Hash: f6831ac80ec81c5d5b370c0ed0fee997
     assemblyName: Unity.VisualScripting.State
     namespaceName: Unity.VisualScripting
@@ -1030,7 +1080,7 @@ ScriptsOnlyBuild:
     className: TextMeshSpawner
   - hash:
       serializedVersion: 2
-      Hash: dd5133f2589d349110ef0beea00f33c4
+      Hash: b5431c48574db6e1341e476d58b5868d
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: EnemyInfo
@@ -1052,6 +1102,12 @@ ScriptsOnlyBuild:
     assemblyName: Unity.TextMeshPro
     namespaceName: TMPro
     className: TextMeshProUGUI
+  - hash:
+      serializedVersion: 2
+      Hash: 4c9191ad2deb3f9721bfb6f598fbcf44
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: AgentConfiguration
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1096,7 +1152,7 @@ ScriptsOnlyBuild:
     className: MarkerTrack
   - hash:
       serializedVersion: 2
-      Hash: 026e9f4e1f0e5aaa06bd4529fc1a9f21
+      Hash: 76e39484f809c82663b6fb012008d002
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: PlayerInfo
@@ -1154,6 +1210,12 @@ ScriptsOnlyBuild:
     assemblyName: Assembly-CSharp
     namespaceName: 
     className: Bullet
+  - hash:
+      serializedVersion: 2
+      Hash: 7a127e2415bec6950ee55da80f9e5fc2
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: SpawnManager
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1300,6 +1362,12 @@ ScriptsOnlyBuild:
     className: PostProcessDebug
   - hash:
       serializedVersion: 2
+      Hash: 80973309787ee6e1440009a6317f595b
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: EnemyGunInfo
+  - hash:
+      serializedVersion: 2
       Hash: 1acffdc47de1ca014dae3d384c3d1086
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.UI
@@ -1402,16 +1470,22 @@ ScriptsOnlyBuild:
     className: UnityOnMouseEnterMessageListener
   - hash:
       serializedVersion: 2
-      Hash: 86b3f904003c4ef3e621cd0f54dbdc40
+      Hash: c14edd12efe43bba93382819bac9b198
     assemblyName: Assembly-CSharp
-    namespaceName: TMPro.Examples
-    className: Benchmark01
+    namespaceName: 
+    className: GunController
   - hash:
       serializedVersion: 2
       Hash: 0e28d8006f33a4c6bf3ef39e20820f9c
     assemblyName: UnityEngine.UI
     namespaceName: UnityEngine.EventSystems
     className: TouchInputModule
+  - hash:
+      serializedVersion: 2
+      Hash: 86b3f904003c4ef3e621cd0f54dbdc40
+    assemblyName: Assembly-CSharp
+    namespaceName: TMPro.Examples
+    className: Benchmark01
   - hash:
       serializedVersion: 2
       Hash: 751e5bae2a317288c2ab58d66687092b
@@ -1424,13 +1498,7 @@ ScriptsOnlyBuild:
     assemblyName: Unity.VisualScripting.Core
     namespaceName: Unity.VisualScripting
     className: UnityOnSliderValueChangedMessageListener
-  - hash:
-      serializedVersion: 2
-      Hash: ee399199be678d5d54c02c0623362827
-    assemblyName: Assembly-CSharp
-    namespaceName: 
-    className: EndGameMenu
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main_Scene.unity
-  playerPath: D:/Unity Projects/SIYC_1_mockup/Survive If You Can.exe
+  playerPath: D:/Unity Projects/CuEfecteCuTot/Survive If You Can.exe

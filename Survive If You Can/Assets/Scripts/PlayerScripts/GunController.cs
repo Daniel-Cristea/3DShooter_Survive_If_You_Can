@@ -16,6 +16,9 @@ public class GunController : MonoBehaviour
     [SerializeField] private ParticleSystem muzzleFlash;
 
     [SerializeField] private Camera fpsCamera;
+    [SerializeField] private AudioSource shootingSound;
+    [SerializeField] private AudioSource emptySound;
+    [SerializeField] private AudioSource reloadingSound;
 
     private float damage;
     private float range;
@@ -25,7 +28,9 @@ public class GunController : MonoBehaviour
     private float reloadingTime;
     private float gunDelay;
     private float LastFired;
-    private bool canUseGun = true;
+    private bool canUseGun;
+    private float emptyGunSoundDelay;
+    private float lastEmptyGunSound;
 
     // Start is called before the first frame update
     void Start()
@@ -54,7 +59,11 @@ public class GunController : MonoBehaviour
                 LastFired = Time.time;
                 Shoot();
             }
-
+            else if (magazineBullets == 0 &&(Time.time - lastEmptyGunSound > emptyGunSoundDelay))
+            {
+                lastEmptyGunSound = Time.time;
+                emptySound.Play();
+            }
         }
         if (Input.GetKey(KeyCode.R))
         {
@@ -68,6 +77,7 @@ public class GunController : MonoBehaviour
         //bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * playerInfo.bulletSpeed;
 
         muzzleFlash.Play();
+        shootingSound.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
         {
@@ -93,6 +103,7 @@ public class GunController : MonoBehaviour
         canUseGun = false; // the gun can't be used util the end of the reload
         RButtonImage.gameObject.SetActive(false); //R button on the screen will disappear
         ReloadingImage.gameObject.SetActive(true); //reloading text appears on the screen
+        
 
         yield return new WaitForSeconds(reloadingTime);
         if (allBullets > 0)
@@ -110,7 +121,7 @@ public class GunController : MonoBehaviour
                 allBullets = 0;
             }
         }
-
+        reloadingSound.Play();
         canUseGun = true;
         ReloadingImage.gameObject.SetActive(false); //reloading text disappears 
 
@@ -125,7 +136,10 @@ public class GunController : MonoBehaviour
         allBullets = playerInfo.allBullets;
         reloadingTime = playerInfo.gunReloadingTime;
         gunDelay = playerInfo.gunDelay;
+        canUseGun = true;
         LastFired = 0.0f;
+        emptyGunSoundDelay = 0.3f;
+        lastEmptyGunSound = 0.0f;
     }
 
     private void WriteOnScreen()

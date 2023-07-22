@@ -5153,6 +5153,10 @@ PrefabInstance:
       propertyPath: effectCube
       value: 
       objectReference: {fileID: 2555472833774695116}
+    - target: {fileID: 5149797083676099695, guid: a3fdb3513287e6646a4aa2a875527faf, type: 3}
+      propertyPath: explosionSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 8cf3d00970b4db04abfef94434d02806, type: 3}
     - target: {fileID: 5544792841344175936, guid: a3fdb3513287e6646a4aa2a875527faf, type: 3}
       propertyPath: m_AnchorMax.x
       value: 0

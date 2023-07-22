@@ -21,8 +21,9 @@ public class EndGameMenu : MonoBehaviour
     public void RestartGame()
     {
         TargetPlayer.playerDied = false;
+        EndGameMenu.gameIsPaused = false;
         Time.timeScale = 1.0f;
-        // AudioListener.pause = false;
+        AudioListener.pause = false;
         EndGameMenuUI.SetActive(false);
         SceneManager.LoadScene("Main_Scene");
     }
@@ -36,8 +37,8 @@ public class EndGameMenu : MonoBehaviour
     {
         UnlockCursor();
         EndGameMenuUI.SetActive(true);
+        AudioListener.pause = true;
         Time.timeScale = 0f;
-        // AudioListener.pause = true;
     }
 
     private void UnlockCursor()

@@ -26,14 +26,14 @@ public class PauseMenu : MonoBehaviour
         PauseGameMenuUI.SetActive(true);
         UnlockCursor();
         Time.timeScale = 0.0f;
-        // AudioListener.pause = false;
+        AudioListener.pause = true;
         StartCoroutine(WaitForRealSeconds(0.1f));
     }
 
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
-        // AudioListener.pause = false;
+        AudioListener.pause = false;
         EndGameMenu.gameIsPaused = false;
         PauseGameMenuUI.SetActive(false);
         LockCursor();
