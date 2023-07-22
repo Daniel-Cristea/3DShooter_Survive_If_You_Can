@@ -8,6 +8,10 @@ public class PlayerCamera : MonoBehaviour
     public Camera camera;
     private float rotationSpeed;
     private bool canRotate = false;
+    private bool zoomPressed = false;
+    private float cameraFOVmin;
+    private float cameraFOVmax;
+
 
     // Start is called before the first frame update
     void Start()
@@ -19,15 +23,20 @@ public class PlayerCamera : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ApplyVerticalRotation();
+        
+        if (!EndGameMenu.gameIsPaused) {
+            ApplyVerticalRotation();
+            ApplyZoom();
+        }
         
     }
 
 
     private void InitializeVariables()
     {
-        
         rotationSpeed = playerInfo.cameraRotationSpeed;
+        cameraFOVmin = playerInfo.cameraFOVMin;
+        cameraFOVmax = playerInfo.cameraFOVMax;
     }
 
     private void ApplyVerticalRotation()
@@ -48,5 +57,32 @@ public class PlayerCamera : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         canRotate = true;
     }
+
+    private void ApplyZoom()
+    {
+
+        if (Input.GetMouseButton(1))
+        {
+            zoomPressed = true;
+            if (camera.fieldOfView > cameraFOVmin)
+            {
+                camera.fieldOfView -= 1;
+            }
+        }
+        else
+        {
+            zoomPressed = false;
+        }
+
+
+        if (!zoomPressed)
+        {
+            if (camera.fieldOfView <= cameraFOVmax)
+            {
+                camera.fieldOfView += 1;
+            }
+        }
+    }
+
 
 }

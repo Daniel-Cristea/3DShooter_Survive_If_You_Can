@@ -2,6 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditorInternal.Profiling.Memory.Experimental.FileFormat;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class SpawnManager : MonoBehaviour
 {
@@ -9,6 +11,9 @@ public class SpawnManager : MonoBehaviour
     public UnityEngine.Transform[] spawnPoints;
     [SerializeField] private GameObject MeleeEnemy;
     [SerializeField] private GameObject RangedEnemy;
+
+    [SerializeField] private GameObject nextWaveCanvas;
+    [SerializeField] private Text nextWaveText;
 
     public UnityEngine.Transform[] spawnPoints_Room0_Creeper;
     public UnityEngine.Transform[] spawnPoints_Room0_Ranged;
@@ -25,20 +30,88 @@ public class SpawnManager : MonoBehaviour
 
     int roomIndexCreeper = 0;
     int roomIndexRanged = 0;
+    float timeRemaining = 0f;
 
+    private void Start()
+    {
+        SetSpawningTimer();
+    }
 
-    public void SpawnRequest(EnemyTYPE enemyType, int currentRoomNumber)
+    private void Update()
+    {
+        SpawningCountdown();
+        UpdateCountdownInterface();
+    }
+
+    private void SetSpawningTimer()
+    {
+
+        timeRemaining = UnityEngine.Random.Range(60, 120);
+        
+    }
+
+    private void SpawningCountdown()
+    {
+
+        if (timeRemaining > 0)
+        {
+            timeRemaining -= Time.deltaTime;
+        }
+        else
+        {
+            SetSpawningTimer();
+            PopulateMap();
+        }
+    }
+
+    private void UpdateCountdownInterface()
+    {
+        if (timeRemaining <= 8)
+        {
+            nextWaveText.text = "Next Wave \r\n in " + (int)timeRemaining + "...";
+            nextWaveCanvas.SetActive(true);
+        }
+        else
+        {
+            nextWaveCanvas.SetActive(false);
+        }
+    }
+
+    private void PopulateMap()
+    {
+        for(int i = 0; i < 6; i++)
+        {
+            SpawnRequest(EnemyTYPE.Ranged, i);
+            SpawnRequest(EnemyTYPE.Melee, i);
+        }
+    }
+
+    private void SpawnRequest(EnemyTYPE enemyType, int roomIndex)
+    {
+        Transform spawnPoint = getSpawnPoint(enemyType, roomIndex);
+        Spawn(enemyType, spawnPoint);
+    }
+
+    public void ReSpawnRequest(EnemyTYPE enemyType, int currentRoomNumber)
     {
         int roomIndex = getRoomIndex(enemyType, currentRoomNumber);
         Transform spawnPoint = getSpawnPoint(enemyType, roomIndex);
-        StartCoroutine(Spawn(enemyType, spawnPoint));
+        StartCoroutine(ReSpawn(enemyType, spawnPoint));
     }
 
 
-    IEnumerator Spawn(EnemyTYPE enemyType, Transform spawnPoint)
+    IEnumerator ReSpawn(EnemyTYPE enemyType, Transform spawnPoint)
     {
         yield return new WaitForSeconds(1.0f);
 
+        if (enemyType == EnemyTYPE.Melee)
+            Instantiate(MeleeEnemy, spawnPoint);
+        else if (enemyType == EnemyTYPE.Ranged)
+            Instantiate(RangedEnemy, spawnPoint);
+    }
+
+    private void Spawn(EnemyTYPE enemyType, Transform spawnPoint)
+    {
         if (enemyType == EnemyTYPE.Melee)
             Instantiate(MeleeEnemy, spawnPoint);
         else if (enemyType == EnemyTYPE.Ranged)

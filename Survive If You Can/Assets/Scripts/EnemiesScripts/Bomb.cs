@@ -43,7 +43,7 @@ public class Bomb : MonoBehaviour
         DamagePlayer();
         int currentRoomNumber = getRoomNumber();
 
-        spawnManager.SpawnRequest(EnemyTYPE.Melee, currentRoomNumber);
+        spawnManager.ReSpawnRequest(EnemyTYPE.Melee, currentRoomNumber);
         Destroy(transform.parent.parent.gameObject);
     }
 

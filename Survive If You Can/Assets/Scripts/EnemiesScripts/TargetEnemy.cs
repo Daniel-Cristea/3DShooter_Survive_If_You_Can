@@ -9,6 +9,7 @@ public class TargetEnemy : MonoBehaviour
     [SerializeField] private float health;
     [SerializeField] private SpawnManager spawnManager;
     [SerializeField] private AdaptiveBehavior adaptiveBehavior;
+    [SerializeField] private ParticleSystem shotEffect;
     private float maxHealth;
     private GameObject Player;
     private int bonusPoints;
@@ -30,6 +31,8 @@ public class TargetEnemy : MonoBehaviour
     {
         
         health -= damage;
+        if(shotEffect!= null) 
+        shotEffect.Play();
         if (health <= 0)
         {
             Die();
@@ -44,7 +47,7 @@ public class TargetEnemy : MonoBehaviour
 
         int currentRoomNumber = getRoomNumber();
         
-        spawnManager.SpawnRequest(adaptiveBehavior.getEnemyType(), currentRoomNumber);
+        spawnManager.ReSpawnRequest(adaptiveBehavior.getEnemyType(), currentRoomNumber);
 
         Destroy(transform.parent.gameObject);
     }

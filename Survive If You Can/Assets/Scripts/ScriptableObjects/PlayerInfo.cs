@@ -9,6 +9,8 @@ public class PlayerInfo : ScriptableObject
     public float fastMovementSpeed = 7.0f;
     public float maxHealth = 100.0f;
     public float cameraRotationSpeed = 720.0f;
+    public float cameraFOVMax = 75.0f;
+    public float cameraFOVMin = 55.0f;
     public float gunRange = 40.0f;
     public float gunDamage = 4.0f;
     public int gunMagazineCapacity = 30;

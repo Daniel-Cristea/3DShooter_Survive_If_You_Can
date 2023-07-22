@@ -13,6 +13,7 @@ public class GunController : MonoBehaviour
     [SerializeField] private Image RButtonImage;
     [SerializeField] private Transform bulletSpawnPoint;
     [SerializeField] private GameObject bulletPrefab;
+    [SerializeField] private ParticleSystem muzzleFlash;
 
     [SerializeField] private Camera fpsCamera;
 
@@ -46,7 +47,7 @@ public class GunController : MonoBehaviour
 
     private void GunInteractions()
     {
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && !EndGameMenu.gameIsPaused)
         {
             if (magazineBullets > 0 && (Time.time - LastFired > gunDelay))
             {
@@ -63,9 +64,10 @@ public class GunController : MonoBehaviour
 
     private void Shoot()
     {
-        var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
-        bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * playerInfo.bulletSpeed;
+        //var bullet = Instantiate(bulletPrefab, bulletSpawnPoint.position, bulletSpawnPoint.rotation);
+        //bullet.GetComponent<Rigidbody>().velocity = bulletSpawnPoint.forward * playerInfo.bulletSpeed;
 
+        muzzleFlash.Play();
         RaycastHit hit;
         if (Physics.Raycast(fpsCamera.transform.position, fpsCamera.transform.forward, out hit, range))
         {
