@@ -11,6 +11,7 @@ ScriptsOnlyBuild:
     - EnemyInfo
     - GunController
     - HealthBar
+    - Minimap
     - PauseMenu
     - PlayerCamera
     - PlayerInfo
@@ -20,7 +21,6 @@ ScriptsOnlyBuild:
     - TargetEnemy
     - TargetPlayer
     Unity.AI.Navigation.Editor.dll:
-    - Unity.AI.Navigation.Editor.NavMeshAssetManager
     - Unity.AI.Navigation.Editor.NavigationWindow
     Unity.AI.Navigation.dll:
     - Unity.AI.Navigation.NavMeshSurface
@@ -34,6 +34,9 @@ ScriptsOnlyBuild:
     - TMPro.TMP_StyleSheet
     Unity.TextMeshPro.dll:
     - TMPro.TMP_FontAsset
+    - TMPro.TMP_Settings
+    - TMPro.TMP_SpriteAsset
+    - TMPro.TMP_StyleSheet
     - TMPro.TextMeshProUGUI
     UnityEditor.TestRunner.dll:
     - UnityEditor.TestTools.TestRunner.Api.CallbacksHolder
@@ -46,6 +49,7 @@ ScriptsOnlyBuild:
     - UnityEngine.UI.CanvasScaler
     - UnityEngine.UI.GraphicRaycaster
     - UnityEngine.UI.Image
+    - UnityEngine.UI.RawImage
     - UnityEngine.UI.Shadow
     - UnityEngine.UI.Slider
     - UnityEngine.UI.Text
@@ -133,6 +137,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 0}
     - Class: 83
       Script: {instanceID: 0}
+    - Class: 84
+      Script: {instanceID: 0}
     - Class: 89
       Script: {instanceID: 0}
     - Class: 104
@@ -151,6 +157,8 @@ ScriptsOnlyBuild:
       Script: {instanceID: 1862}
     - Class: 114
       Script: {instanceID: 2270}
+    - Class: 114
+      Script: {instanceID: 2402}
     - Class: 114
       Script: {instanceID: 2706}
     - Class: 114
@@ -204,9 +212,11 @@ ScriptsOnlyBuild:
     - Class: 114
       Script: {instanceID: 6686}
     - Class: 114
-      Script: {instanceID: 7398}
+      Script: {instanceID: 7112}
     - Class: 114
-      Script: {instanceID: 8080}
+      Script: {instanceID: 7400}
+    - Class: 114
+      Script: {instanceID: 8082}
     - Class: 115
       Script: {instanceID: 0}
     - Class: 128
@@ -1326,6 +1336,12 @@ ScriptsOnlyBuild:
     className: Dropdown
   - hash:
       serializedVersion: 2
+      Hash: 12a39042d215b0aa53981db1447bc26e
+    assemblyName: Assembly-CSharp
+    namespaceName: 
+    className: Minimap
+  - hash:
+      serializedVersion: 2
       Hash: a31fd79490479c7454bc49ff7ef65bbf
     assemblyName: Assembly-CSharp
     namespaceName: TMPro.Examples
@@ -1501,4 +1517,4 @@ ScriptsOnlyBuild:
   platform: 19
   scenePathNames:
   - Assets/Scenes/Main_Scene.unity
-  playerPath: D:/Unity Projects/CuEfecteCuTot/Survive If You Can.exe
+  playerPath: D:/Unity Projects/SurviveIfYouCan_exe/Survive If You Can.exe

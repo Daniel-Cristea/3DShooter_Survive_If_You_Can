@@ -87,7 +87,7 @@ Material:
     - _GlossFromBrightness_exponent: 8
     - _GlossFromBrightness_multiplicator: 0.3333
     - _GlossMapScale: 1
-    - _Glossiness: 0.3
+    - _Glossiness: 0.19
     - _GlossyReflections: 1
     - _LightmapShading: 0.7
     - _Metallic: 0

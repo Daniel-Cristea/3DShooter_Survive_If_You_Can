@@ -373,6 +373,7 @@
 "Assets/Scripts/EnemiesScripts/TaskAttack.cs"
 "Assets/Scripts/EnemiesScripts/TaskGoToTarget.cs"
 "Assets/Scripts/EnemiesScripts/TaskPatrol.cs"
+"Assets/Scripts/Minimap.cs"
 "Assets/Scripts/PauseMenu.cs"
 "Assets/Scripts/PlayerScripts/Bullet.cs"
 "Assets/Scripts/PlayerScripts/EndGameMenu.cs"

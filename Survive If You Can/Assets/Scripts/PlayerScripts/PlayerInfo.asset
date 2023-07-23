@@ -15,7 +15,7 @@ MonoBehaviour:
   slowMovementSpeed: 6
   fastMovementSpeed: 8
   maxHealth: 100
-  cameraRotationSpeed: 720
+  cameraRotationSpeed: 360
   cameraFOVMax: 75
   cameraFOVMin: 60
   gunRange: 40
